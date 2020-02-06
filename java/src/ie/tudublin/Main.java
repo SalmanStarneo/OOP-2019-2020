@@ -13,6 +13,12 @@ public class Main
 	{
 		String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new BugZap());
+    }
+    
+    public void airSeaBattle()
+	{
+		String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new AirSeaBattle());
 	}
     
     public static void main(String[] arg)
@@ -29,7 +35,7 @@ public class Main
         */
 
         Main main = new Main();
-		main.bugZap();
+		main.airSeaBattle();
         
     }
 }
