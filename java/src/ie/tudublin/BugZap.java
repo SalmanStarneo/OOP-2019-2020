@@ -36,6 +36,9 @@ public class BugZap extends PApplet
 	float bugX, bugY, bugWidth = 30;
 	float halfBugWidth = bugWidth / 2;
 
+	float shotX, shotY, shotWidth = 20;//for replacing the beam line
+	float halfshotWidth = shotWidth / 2;
+
 	void reset()
 	{
 		resetBug();
@@ -91,6 +94,8 @@ public class BugZap extends PApplet
 		
 	}
 
+	
+
 	public void keyPressed()
 	{
 		if (keyCode == LEFT)
@@ -109,7 +114,7 @@ public class BugZap extends PApplet
 		}
 		if (key == ' ')
 		{
-			line(playerX, playerY, playerX, bugY);
+			rect(playerX, playerY/3, playerX/6, bugY/2);
 		}
 	}	
 
@@ -117,17 +122,28 @@ public class BugZap extends PApplet
 	{
 		
 			bugX ++;
-			if (bugX < halfBugWidth)
+			// if (bugX < halfBugWidth)
+			// {
+			//   resetBug();
+			// }
+			
+			if (bugX > halfBugWidth + width)
 			{
 			  resetBug();
 			}
-			
-			if (bugX + halfBugWidth > width)
-			{
-			  bugX= - halfBugWidth;
-			}
 			// bugY ++;
 		
+	}
+
+	void moveshot()
+	{
+		shotY--;
+
+		if (shotX > halfshotWidth + width)
+			{
+			  // resetShot();
+			}
+
 	}
 
 	public void draw()
