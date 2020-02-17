@@ -3,12 +3,6 @@ package ie.tudublin;
 public class Main
 {
 
-    public void helloArrays()
-	{
-		String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new Arrays());
-    }
-
     public void helloProcessing()
 	{
 		String[] a = {"MAIN"};
@@ -45,7 +39,7 @@ public class Main
         // The type is a superclass, the instance is a subclass
 
         // This is not polymorphism
-        Cat topcat = new Cat("Topcat");
+        // Cat topcat = new Cat("Topcat");
 
         // This is polymorphism!
         Animal mino = new Cat("Mino");
