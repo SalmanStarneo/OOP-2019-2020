@@ -93,7 +93,7 @@ public class Loops extends PApplet
 
 		loops2();
 
-		float f = 2.0f;
+		// float f = 2.0f;
 
 		//loops3();
 	}
