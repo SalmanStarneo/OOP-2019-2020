@@ -32,6 +32,9 @@ public class Loops extends PApplet
 	public void loops2()
 	{
 		int numCircles  = (int) (20 * (mouseX / (float) width)) ;
+
+		//with cast in java it prevent getting error about dividing float into an int resulting in losing value
+
 		
 		float w = width / (float) numCircles;
 		float radius = w / 2.0f;
@@ -89,6 +92,8 @@ public class Loops extends PApplet
 		//loops1();
 
 		loops2();
+
+		float f = 2.0f;
 
 		//loops3();
 	}

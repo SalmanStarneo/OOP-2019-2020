@@ -9,6 +9,12 @@ public class Main
         processing.core.PApplet.runSketch( a, new HelloProcessing());
     }
 
+    public void helloArrays()
+	{
+		String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new Arrays());
+    }
+
     public void loops()
     {
 		String[] a = {"MAIN"};
@@ -35,11 +41,6 @@ public class Main
         // This is not polymorphism
         Cat topcat = new Cat("Topcat");
 
-<<<<<<< HEAD
-        Main main = new Main();
-        main.airSeaBattle();
-        main.bugZap();
-=======
         // This is polymorphism!
         Animal mino = new Cat("Mino");
         // A vitual method!
@@ -55,7 +56,6 @@ public class Main
 
         Animal a = new Cat("a");
         Animal b = new Cat("b");
->>>>>>> 8f0bb789dfdaf47f8a4e396dbaa9d71e7a1127d7
         
         System.out.println(a);
         System.out.println(b);
@@ -75,6 +75,6 @@ public class Main
     public static void main(String[] arg)
     {
         Main main = new Main();
-		main.loops();        
+		main.helloArrays();        
     }
 }
