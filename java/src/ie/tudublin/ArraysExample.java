@@ -78,6 +78,18 @@ public class ArraysExample extends PApplet
 		}
 	}
 
+	void drawLineChart()
+	{
+		float w = width / (float) rainFall.length;
+		float cGap = 255 / (float) rainFall.length;
+		noStroke();
+		float 
+		for(int i=0; i < 10; i++)
+		{
+
+		}
+	}
+
 	public void keyPressed()
 	{
 		if (key == ' ')
