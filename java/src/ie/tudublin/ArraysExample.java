@@ -80,16 +80,41 @@ public class ArraysExample extends PApplet
 
 	void drawLineChart()
 	{
-		float w = width / (float) rainFall.length;
-		float cGap = 255 / (float) rainFall.length;
-		noStroke();
-		float 
-		for(int i=0; i < 10; i++)
-		{
+		float border = width * 0.1f;
+		textAlign(CENTER,CENTER);
+		fill(255);
+		stroke(255);
+		line(border, border, border, height - border);
 
+		for(int ya = 0; ya<=150 ; ya+=10)
+		{
+			float y = map(ya, 0, 150, height-border,border);
+			line(border, y ,border-5,y);
+			text(ya, border/2, y);
 		}
+		line(border,height-border, width - border, height - border);
+	
+		for(int i =0; i<= months.length-1 ; i++)
+		{
+			float x = map(i, 0, months.length-1, border, width-border);
+			// map(percentage,pointA in range, pointB in range, RangeA, RangeB)
+			line(x, height-border, x, height-(border+5));
+			text(months[i], x, height-(border/2));
+		}
+
+		for(int i=0; i<rainFall.length-1;i++)
+		{
+			float x1 = map(i,months[i], border-height,i,width-border);
+			float x2 = map(i,0, border-height, i,width-border);
+			line(x1,height-border,x2, height-(border/2));
+		}
+			
 	}
 
+	void arkPieChart()
+	{
+
+	}
 	public void keyPressed()
 	{
 		if (key == ' ')
@@ -103,6 +128,7 @@ public class ArraysExample extends PApplet
 		background(0);		
 		colorMode(HSB);	
 
-		drawBarChart();
+		// drawBarChart();
+		drawLineChart();
 	}
 }
