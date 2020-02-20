@@ -60,8 +60,6 @@ public class ArraysExample extends PApplet
 		Float[] floatArray = {10.0f, 5.0f, 20.0f};
 		float min = Collections.min(Arrays.asList(floatArray)); 
         float max = Collections.max(Arrays.asList(floatArray));
-
-
 	}
 
 	void drawBarChart()
