@@ -58,8 +58,8 @@ public class ArraysExample extends PApplet
 		// Note the array is of type Float not float
 		// Float are objects float is a primitive type
 		Float[] floatArray = {10.0f, 5.0f, 20.0f};
-		float min = Collections.min(Arrays.asList(floatArray)); 
-        float max = Collections.max(Arrays.asList(floatArray));
+		// float min = Collections.min(Arrays.asList(floatArray)); 
+        // float max = Collections.max(Arrays.asList(floatArray));
 	}
 
 	void drawBarChart()
@@ -153,8 +153,8 @@ public class ArraysExample extends PApplet
 		colorMode(HSB);	
 
 		//drawBarChart();
-		//drawLineGraph();
-		drawPieChart();
+		drawLineGraph();
+		// drawPieChart();
 		stroke(255);
 	}
 }
