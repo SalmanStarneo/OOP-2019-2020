@@ -101,12 +101,13 @@ public class ArraysExample extends PApplet
 			line(x, height-border, x, height-(border+5));
 			text(months[i], x, height-(border/2));
 		}
-
-		for(int i=0; i<rainFall.length-1;i++)
+		fill(0,255,0);
+		for(int i=0; i<months.length-1;i++)
 		{
-			float x1 = map(i,months[i], border-height,i,width-border);
-			float x2 = map(i,0, border-height, i,width-border);
-			line(x1,height-border,x2, height-(border/2));
+			
+			float x1 = map(rainFall[i], 0, i, 0,months.length/2);
+			float x2 = map(rainFall[i+1], 0, i+1, 0,months.length);
+			line(x1,height-border,x2, -height+(border/2));
 		}
 			
 	}
