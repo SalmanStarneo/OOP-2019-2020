@@ -26,17 +26,26 @@ public class Sound1 extends PApplet
 	public void draw()
 	{	
 		background(0);		
-		stroke(255);
+		fill(255);
 		float cy = height / 2;
-		
+		float cx = width/2;
+		float sum = 0;
+		noStroke();
 		for(int i = 0 ; i < ai.bufferSize() ; i ++)
 		{
-			stroke(
+			fill(
 				map(i, 0, ai.bufferSize(), 0, 255)
 				, 255
 				, 255
 			);
-			line(i, cy, i, cy + ai.left.get(i) * cy);
+			sum+=abs(ai.left.get(i));
+			// avg=ai;
+			// line(i, cy, i, cy + ai.left.get(i) * cy);
 		}
+		
+
+		float avg = sum/ai.bufferSize();
+		float w = avg*cy;
+		circle(cx, cy, w);
 	}
 }
