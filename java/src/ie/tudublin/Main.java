@@ -15,12 +15,6 @@ public class Main
         processing.core.PApplet.runSketch( a, new HelloProcessing());
     }
 
-    public void helloArrays()
-	{
-		String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new Arrays());
-    }
-
     public void loops()
     {
 		String[] a = {"MAIN"};
