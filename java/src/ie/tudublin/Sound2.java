@@ -25,6 +25,11 @@ public class Sound2 extends PApplet
 
 	float lerpedw = 0;
 
+	public void spinningVoice()
+	{
+		
+	}
+
 	public void keyPressed()
 	{
 		as.stop();
