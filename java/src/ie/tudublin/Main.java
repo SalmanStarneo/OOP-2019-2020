@@ -92,10 +92,6 @@ public class Main
     public static void main(String[] arg)
     {
         Main main = new Main();
-<<<<<<< HEAD
-		main.helloArrays();        
-=======
 		main.sound2();        
->>>>>>> ad2ecaa997019386113b584d9f66dfa01b380b2b
     }
 }
