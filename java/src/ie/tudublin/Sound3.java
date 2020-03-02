@@ -2,20 +2,15 @@ package ie.tudublin;
 
 import processing.core.PApplet;
 import ddf.minim.*;
-import ddf.minim.analysis.FFT;
 
-public class Sound2 extends PApplet
+public class Sound3 extends PApplet
 {	
 	Minim minim;
 	AudioSample as;
 
 	int frameSize = 1024;
 
-	int sampleRate = 44100;
-
-	FFT fft;
-
-	float frameToSecond = sampleRate / (float) frameSize;
+	float frameToSecond = 44100 / (float) frameSize;
 
 	public void settings()
 	{
@@ -26,10 +21,7 @@ public class Sound2 extends PApplet
 	public void setup() 
 	{
 		minim = new Minim(this);
-		as = minim.loadSample("scale.wav", frameSize);
-		
-		fft = new FFT(frameSize, sampleRate); 
-
+		as = minim.loadSample("heroplanet.mp3", frameSize);
 		colorMode(HSB);
 	}
 
@@ -50,16 +42,13 @@ public class Sound2 extends PApplet
 	float lerpedw = 0;
 	float average = 0;
 
-	public void spinningVoice()
-	{
-		
-	}
-
 	public void keyPressed()
 	{
-<<<<<<< HEAD
-		as.stop();
-		as.trigger();
+		if (key == ' ')
+		{
+			as.stop();
+			as.trigger();
+		}
 
 	}
 
@@ -83,21 +72,8 @@ public class Sound2 extends PApplet
 			);
 			line(cx, cy, x, y);
 		}
-		offs += 10f;
-=======
->>>>>>> 9dae6c15e7dec9d5d6f4b208477af206ffa8c292
-		if (key == ' ')
-		{
-			as.stop();
-			as.trigger();
-		}
-<<<<<<< HEAD
-=======
-
->>>>>>> 9dae6c15e7dec9d5d6f4b208477af206ffa8c292
+		offs += average * 100f;		
 	}
-
-	float offs = 0;
 	
 	public void draw()
 	{	
@@ -112,7 +88,7 @@ public class Sound2 extends PApplet
 				, 255
 				, 255
 			);
-			line(i, cy, i, cy + as.left.get(i) * cy);
+			//line(i, cy, i, cy + ai.left.get(i) * cy);
 			sum += abs(as.left.get(i));
 		}
 		average = sum / as.bufferSize();
@@ -132,21 +108,8 @@ public class Sound2 extends PApplet
 
 		float freq = count * frameToSecond;
 		textSize(22);
-		text("Zero crossings frequency: " + freq, 100, 50);
+		text(freq, 100, 50);
 
-		fft.window(FFT.HAMMING);
-		fft.forward(as.left);
-
-		stroke(255);
-		int highestBin = 0;
-		for(int i = 0 ; i < fft.specSize() ; i ++)
-		{
-			line(i, 0, i, fft.getBand(i) * 100);
-		}
-
-		float freq1 = fft.indexToFreq(highestBin);
-
-		text("FFT Freq: " + freq1, 100, 100);
-
+		circleVisual();
 	}
 }
