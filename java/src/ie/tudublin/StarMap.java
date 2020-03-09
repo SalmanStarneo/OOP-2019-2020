@@ -44,7 +44,8 @@ public class StarMap extends PApplet
 
     public void draw()
     {
-
+        loadData();
+        printStars();
     }
 
 }
