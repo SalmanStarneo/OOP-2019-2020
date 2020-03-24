@@ -5,70 +5,70 @@ public class Main
 
     public void soundSynthesis()
 	{
-		String[] a = {"MAIN"};
+		final String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new SoundSynthesis());
     }
     public void starMap()
 	{
-		String[] a = {"MAIN"};
+		final String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new StarMap());
     }
     public void helloArrays()
 	{
-		String[] a = {"MAIN"};
+		final String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new ArraysExample());
     }
 
     public void helloProcessing()
 	{
-		String[] a = {"MAIN"};
+		final String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new HelloProcessing());
     }
     public void loops()
     {
-		String[] a = {"MAIN"};
+		final String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new Loops());
     }
     
     public void bugZap()
 	{
-		String[] a = {"MAIN"};
+		final String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new BugZap());
     }
     
     public void sound1()
 	{
-		String[] a = {"MAIN"};
+		final String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new Sound1());
     }
 
     public void sound2()
 	{
-		String[] a = {"MAIN"};
+		final String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new Sound2());
     }
 
     public void sound3()
 	{
-		String[] a = {"MAIN"};
+		final String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new Sound3());
     }
 
     public void audioBands()
 	{
-		String[] a = {"MAIN"};
+		final String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new AudioBands());
     }
 
     public void airSeaBattle()
 	{
-		String[] a = {"MAIN"};
+		final String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new AirSeaBattle());
     }
 
     public void soundMandala()
     {
-        String[] a = {"MAIN"};
+        final String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new SoundMandala());
     }
     
@@ -78,7 +78,7 @@ public class Main
         // The type is a superclass, the instance is a subclass
 
         // This is not polymorphism
-        Cat topcat = new Cat("Topcat");
+        final Cat topcat = new Cat("Topcat");
 
         // This is polymorphism!
         Animal mino = new Cat("Mino");
@@ -94,7 +94,7 @@ public class Main
         //topcat = new Dog("Tara"); // This wont compile!
 
         Animal a = new Cat("a");
-        Animal b = new Cat("b");
+        final Animal b = new Cat("b");
         
         System.out.println(a);
         System.out.println(b);
@@ -111,9 +111,17 @@ public class Main
 
     }
     
-    public static void main(String[] arg)
+    public static void main(final String[] arg)
     {
-        Main main = new Main();
-		main.sound1();        
+        final Main main = new Main();
+		main.PitchSpeller();        
+    }
+
+    private void PitchSpeller() {
+
+        PitchSpeller ps = new PitchSpeller();
+        System.out.println(ps.spell(330));
+        System.out.println(ps.spell(420));
+        System.out.println(ps.spell(1980));
     }
 }

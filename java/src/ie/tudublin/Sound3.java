@@ -2,78 +2,44 @@ package ie.tudublin;
 
 import processing.core.PApplet;
 import ddf.minim.*;
+import ddf.minim.analysis.*;
 
 public class Sound3 extends PApplet
 {	
 	Minim minim;
-	AudioSample as;
+	AudioInput ai;
+
+	FFT fft;
 
 	int frameSize = 1024;
+	
+	int sampleRate = 44100;
 
-	float frameToSecond = 44100 / (float) frameSize;
+
 
 	public void settings()
 	{
 		size(1024, 500);
 	}
 
-
 	public void setup() 
 	{
 		minim = new Minim(this);
-		as = minim.loadSample("heroplanet.mp3", frameSize);
+		ai = minim.getLineIn(Minim.MONO, width, 44100, 16);
+
 		colorMode(HSB);
-	}
+		circy = height / 2;
+		lerpedcircley = circy;
 
-	int countZeroCrossings()
-	{
-		int count = 0;
-
-		for(int i = 1 ; i < as.bufferSize() ; i ++)
-		{
-			if (as.left.get(i-1) > 0 && as.left.get(i) <= 0)
-			{
-				count ++;
-			}
-		}
-		return count;
-	}
-
-	float lerpedw = 0;
-	float average = 0;
-
-	public void keyPressed()
-	{
-		if (key == ' ')
-		{
-			as.stop();
-			as.trigger();
-		}
+		fft = new FFT(frameSize, sampleRate); 
 
 	}
 
 	float offs = 0;
 
-	public void circleVisual()
-	{
-		strokeWeight(2);
-		float cx = width / 2;
-		float cy = height / 2;
-
-		for(int i = 0 ; i < as.bufferSize() ; i ++)
-		{
-			float theta = map(i, 0, as.bufferSize(), 0, TWO_PI);
-			float x = cx + sin(theta) * cx * abs(as.left.get(i));
-			float y = cy + cos(theta) * cx * abs(as.left.get(i));
-			stroke(
-				map(i + offs, 0, as.bufferSize(), 0, 255) % 255
-				,255
-				,255
-			);
-			line(cx, cy, x, y);
-		}
-		offs += average * 100f;		
-	}
+	float circy;
+	float lerpedcircley;
+	float lerpedw = 0;
 	
 	public void draw()
 	{	
@@ -81,17 +47,17 @@ public class Sound3 extends PApplet
 		stroke(255);
 		float cy = height / 2;
 		float sum = 0;
-		for(int i = 0 ; i < as.bufferSize() ; i ++)
+		for(int i = 0 ; i < ai.bufferSize() ; i ++)
 		{
 			stroke(
-				map(i, 0, as.bufferSize(), 0, 255)
+				map(i, 0, ai.bufferSize(), 0, 255)
 				, 255
 				, 255
 			);
 			//line(i, cy, i, cy + ai.left.get(i) * cy);
-			sum += abs(as.left.get(i));
+			sum += abs(ai.left.get(i));
 		}
-		average = sum / as.bufferSize();
+		float average = sum / ai.bufferSize();
 
 		float w  = average * 1000;
 		lerpedw = lerp(lerpedw, w, 0.1f);
@@ -102,14 +68,33 @@ public class Sound3 extends PApplet
 			, 255
 		);
 		//ellipse(400 , cy,w, w);
-		//ellipse(600 , cy,lerpedw, lerpedw);	
+		//ellipse(600 , cy,lerpedw, lerpedw);
+
+
 		
-		int count = countZeroCrossings();
+		for(int i = 0 ; i < ai.bufferSize() ; i ++)
+		{
+			stroke(
+				map(i, 0, ai.bufferSize(), 0, 255)
+				, 255
+				, 255
+			);
+			line(i, cy, i, cy + ai.left.get(i) * cy);
+		}
+		
+		circy += random(-20, 20);
+		lerpedcircley = lerp(lerpedcircley, circy, 0.1f);
+		//ellipse(100, circy, 50, 50);
+		//ellipse(200, lerpedcircley, 50, 50);
 
-		float freq = count * frameToSecond;
-		textSize(22);
-		text(freq, 100, 50);
+		fft.window(FFT.HAMMING);
+		fft.forward(ai.left);
 
-		circleVisual();
+		stroke(255);
+		for(int i = 0 ; i < fft.specSize() ; i ++)
+		{
+			line(i, 0, i, fft.getBand(i) * 100);
+		}
+		
 	}
 }

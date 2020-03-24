@@ -1,5 +1,7 @@
 package ie.tudublin;
 
+import processing.core.PApplet;
+
 public class PitchSpeller 
 {	
 	private float[] frequencies = {293.66f, 329.63f, 369.99f, 392.00f, 440.00f, 493.88f, 554.37f, 587.33f
