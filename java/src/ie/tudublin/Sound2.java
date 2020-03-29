@@ -12,7 +12,7 @@ public class Sound2 extends PApplet
 	int frameSize = 1024;
 
 	int sampleRate = 44100;
-
+ 
 	FFT fft;
 
 	float frameToSecond = sampleRate / (float) frameSize;
@@ -26,7 +26,7 @@ public class Sound2 extends PApplet
 	public void setup() 
 	{
 		minim = new Minim(this);
-		as = minim.loadSample("scale.wav", frameSize);
+		as = minim.loadSample("Aurora_Currents.wav", frameSize);
 		
 		fft = new FFT(frameSize, sampleRate); 
 
