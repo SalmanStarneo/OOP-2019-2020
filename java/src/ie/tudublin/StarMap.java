@@ -70,14 +70,9 @@ public class StarMap extends PApplet
 
     public void draw()
     {
-<<<<<<< HEAD
-        loadData();
-        printStars();
-=======
         background(0);
         drawGrid();
         drawStars();
->>>>>>> 6065401a6a0453fe27f35dc554026eb95f53aca8
     }
 
 }
