@@ -19,6 +19,12 @@ public class Main
         processing.core.PApplet.runSketch( a, new ArraysExample());
     }
 
+    public void Resistor()
+	{
+		String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new UI());
+	}
+
     public void helloProcessing()
 	{
 		final String[] a = {"MAIN"};
@@ -34,6 +40,11 @@ public class Main
 	{
 		final String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new BugZap());
+    }
+    public void cafe()
+	{
+		final String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new Cafe());
     }
     
     public void sound1()
@@ -121,7 +132,7 @@ public class Main
     public static void main(final String[] arg)
     {
         final Main main = new Main();
-        main.test();        
+        main.Resistor();        
     }
 
     private void PitchSpeller() {
@@ -130,5 +141,11 @@ public class Main
         System.out.println(ps.spell(330));
         System.out.println(ps.spell(420));
         System.out.println(ps.spell(1980));
+    }
+
+    public void test()
+    {
+        final String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new test());
     }
 }
