@@ -8,22 +8,33 @@ public class Color
     public int g;
     public int b;
     public int num;
+    private String colour;
 
-    public Color(int r, int g, int b, int num)
+    public Color(int r, int g, int b, int num,String colour)
     {
         this.r = r;
         this.g = g;
         this.b = b;
         this.num = num;
+        this.colour=colour;
     }
 
     public Color(TableRow tr)
     {
-        this(tr.getInt("r"), tr.getInt("g"), tr.getInt("b"), tr.getInt("value"));
+        this(tr.getInt("r"), tr.getInt("g"), tr.getInt("b"), tr.getInt("value"),tr.getString("colour"));
     }
 
-    public String toString()
-    {
-        return this.r + ", " + this.g + ", " + this.b;
+
+    @Override
+    public String toString() {
+        return "Color [num=" + num + ", colour=" + colour + ", r=" + r + ", g=" + g + ", b=" + b + "]";
+    }
+
+    public String getColour() {
+        return colour;
+    }
+
+    public void setColour(String colour) {
+        this.colour = colour;
     }
 }

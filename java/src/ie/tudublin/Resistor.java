@@ -21,8 +21,7 @@ public class Resistor
         int ones = resistance - ((hundreds * 100)  + (tens * 10));
         hc = ui.findColor(hundreds);
         tc = ui.findColor(tens);
-        oc = ui.findColor(ones);
-        
+        oc = ui.findColor(ones);   
     }
 
     public void render(float x, float y)

@@ -56,12 +56,21 @@ public class UI extends PApplet
 		}
 	}
 
+	public void printColours()
+	{
+		for(Color c:colors)
+		{
+			println(c.getColour()+":"+c.num);
+		}
+	}
+
 	public void settings()
 	{
 		size(500, 800);
 		loadCodes();
 		loadResistors();
 		printResistors();
+		printColours();
 	}
 
 	public void setup() 
@@ -79,6 +88,15 @@ public class UI extends PApplet
 		{
 			float y = map(i, 0, resistors.size(), 100, height - 100);
 			resistors.get(i).render(width / 2, y);
+		}
+		for(int j=0; j<colors.size();j++)
+		{
+			float ycolor = map(j, 0, colors.size(), 50, height-50);
+			fill(colors.get(j).r,colors.get(j).g,colors.get(j).b);
+			// fill(0);
+			textSize(22);
+			textAlign(CENTER, LEFT);
+			text(colors.get(j).getColour()+":"+colors.get(j).num, 100, ycolor);
 		}
 		
 	}
